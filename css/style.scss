@@ -1,0 +1,323 @@
+*{
+    padding:0px;
+    margin:0px;}
+ul{padding-left:0rem;}
+a{text-decoration: none;}
+a:hover{text-decoration:none !important;}
+.none-bg{background: transparent!important;}
+.error{
+    opacity:1;
+font-size:12px;
+padding:0.2rem;
+transform: translate(0, 10px);
+background-color: #0f0202;
+color:fff;
+box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+$colors:(
+    primary:#6600FF,
+    secondry:#1E1C1C,
+    frequent:#fff,
+    dark:#000
+);
+
+li{list-style:none;}
+@mixin button-basic{
+    background-color:transparent !important;
+    border:1px solid #fff !important;
+    }
+
+    @mixin button-basic-2  {
+     -webkit-transform: translateY(-5px);
+	transform: translateY(-5px);
+         }
+
+         .light-class{color:color(frequent);opacity:0.3; font-weight:100;}
+         .footer-hover{opacity: 1;}
+
+@function color($use-color){
+    @return map-get($colors, $use-color)
+}
+
+$phone:360px;
+$tablet:768px;
+$desktop:1366px;
+$LGdesktop:1920px;
+
+@mixin phone {
+    @media (min-width: #{$phone}) {
+        @content;
+    }
+}
+
+@mixin respond-to($media) {
+    @if $media == mobile {
+      @media only screen and (max-width:475px) { @content; }
+    }
+    @else if $media == medium-screens {
+      @media only screen and (min-width: 480px) and (max-width: 768px) { @content; }
+    }
+    
+  }
+
+$padding:15px;
+$margin:15px;
+$border-radius:10px !important;
+$normal-fsize:16px;
+
+body{
+    font-family: 'IBM Plex Sans', sans-serif;
+
+    
+
+    #navbar{background-color:map-get($colors, secondry);
+
+        .navbar-brand img{@include respond-to(mobile) 
+            { width: 180px ;}
+         }
+        
+            
+
+          .btn{
+              background-color:color(frequent);
+              border-radius:$border-radius;
+              font-weight:bold;
+              border:none !important;
+              a{color:#000;}
+
+              /* @include phone{
+                padding:4px 10px;font-size: 12px;
+                } */
+
+               @include respond-to(mobile) 
+                    {font-size:13px;padding:4px 10px;}               
+            
+}
+
+
+.btn:hover{
+    @include button-basic;
+    a{
+        color:#fff;
+    }
+}//btn-hover
+
+
+}//navbar
+}//body
+/* bg section css begin */
+    .top-bg{
+        background: url('../images/top-header.jpg');
+        background-size:cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        color:color(frequent);
+        padding-bottom:3rem;;
+
+        h1{
+            padding-top:30%;
+            font-size:$normal-fsize * 3.5;
+            font-weight:200;
+            letter-spacing: 0.06em;
+
+            @include respond-to(mobile) 
+            { font-size:30px;}
+            @include respond-to(medium-screens) 
+            { font-size:35px;}
+            /* @include phone{
+               font-size: 30px;
+                } */
+
+               
+
+            .txt-rotate{color:color(primary);
+            font-weight:bold;
+            letter-spacing: 0rem;
+
+            span{
+                letter-spacing: 0rem;
+            }
+        }//txt-rotate
+        }//h1
+
+        button{
+            background-color: color(primary);
+            padding:7px 40px;
+            border-radius: $border-radius;
+            border: none;
+            margin-top:2rem;
+
+            /* @include phone{
+                padding: 7px 13px;
+               margin-top: 0.5rem;} */
+
+               @include respond-to(mobile) 
+               { margin-top:0.5rem;margin-bottom: 1rem;padding:7px 18px;}
+
+               @include respond-to(medium-screens) 
+               {padding:7px 20px;}
+
+            &:hover{ 
+                @include button-basic-2;}
+
+            .anchor:after{
+                content:'\2192';
+                font-size:$normal-fsize * 1.3
+                }
+}//button
+
+.form-box{background-color: color(primary);
+padding:$padding;
+width:70%;
+border-top:4px solid #fff;
+float: right;
+
+@include respond-to(mobile) 
+{width:100%;}
+@include respond-to(medium-screens) 
+{width:100%;}
+
+a{color:#000;}
+
+input, select{
+    background-color:transparent;border:none;
+    border-bottom: 1px solid #fff;
+    border-radius:0px;
+    outline: none !important;
+    box-shadow: none;
+    color:color(frequent);text-transform: capitalize;
+    font-size:14px;
+    letter-spacing: 0.01px;
+}
+
+select{font-weight: lighter;}
+
+::placeholder{color:#fff;
+font-weight:lighter;}
+
+.form-select{background-image: url('../images/download.png');
+    option{
+        color:color(secondry);
+    }
+}//form select
+}//form box    
+}//top-bg
+
+.logo{
+    background-color:color(secondry);
+    padding:1rem 0;
+ img{opacity:0.5;margin-top:15px;transition: ease-in 2s;}
+}//logo
+
+//purple bg begin
+
+.purple{
+    background-color: color(primary);
+    h2{padding-top:5rem;} 
+
+ .card{padding:$padding;
+    @include respond-to(mobile) 
+    {margin-top:1rem !important;}
+
+    img{ @include respond-to(mobile) 
+        {max-width:50px;}
+    
+        @include respond-to(medium-screens) 
+{max-width:30px;}
+    }
+
+   p{text-align:justify;font-size:14px;
+    @include respond-to(medium-screens) 
+    {font-size:11px;}}
+   h4{@include respond-to(medium-screens) 
+    {font-size:15px;}}
+   button{width:160px;border-radius: $border-radius;border:none;
+padding:5px 22px;
+
+&:hover{@include button-basic-2;
+}
+}
+button a:after{
+    content:'\203A';
+    padding:0 8px;
+}//button
+}//card
+}//purple
+.globe-bg{
+     background:url('../images/globe-bg.png');
+     background-size: cover;
+     background-position:center center;
+     background-repeat: no-repeat;
+.overlay{background:rgba(0,0,0,0.3);}     
+
+     h1{padding-top:10rem;
+    letter-spacing: 6px;font-size:55px;
+  
+    @include respond-to(mobile) 
+    { letter-spacing:2px;font-size:35px;}
+
+    @include respond-to(medium-screens) 
+{font-size:35px;letter-spacing: 4px;}
+}
+     
+button{margin:2rem auto 10rem auto;padding:6px 28px;
+a{letter-spacing: 1px;color:color(secondry);}
+
+&:hover{@include button-basic;
+a{color:#fff;}
+}
+}//button
+}//globe-bg
+
+footer{background-color:color(secondry);
+color:color(frequent);padding:$padding;
+
+h5{padding-top:3rem;padding-bottom:1rem}
+
+.col-md-3 li{ @extend .light-class;
+    @include respond-to(medium-screens) 
+{font-size:12px;}
+&:hover{@extend .footer-hover;transition: 1s ease;}
+}
+address{@extend .light-class;
+
+    @include respond-to(medium-screens) 
+{font-size:12px;}
+&:hover{@extend .footer-hover;}} 
+
+a{color:color(frequent);font-weight:200;
+&:hover{color:#fff;@extend .footer-hover;}}
+
+.para{font-size:11px;padding-top:2rem;text-align: justify;
+line-height:20px;
+
+@include respond-to(medium-screens) 
+{font-size:10px !important;}}
+
+.input-group{margin-top:1rem;
+input{background:transparent;border:2px solid color(primary);border-radius: 0px;}
+
+::placeholder{color: #fff;font-weight: lighter;font-size: 14px;}
+
+button{background: color(primary);border: $border-radius;}
+}//input-group
+
+#list-horizontal {
+@include respond-to(medium-screens) 
+{text-align: right;}
+
+li{display: inline-flex;padding:5px 0 0 23px;opacity:0.3;
+   
+&:hover{@extend .footer-hover; transition: 1s ease;}
+}//li
+}//horizontal list
+.social a{@extend .light-class;
+    @include respond-to(medium-screens) 
+{font-size:10px;}
+&:hover{opacity:1;}
+}//social
+.bottom-text{ @include respond-to(mobile) 
+    {text-align: center;}}
+}//foooter
+
